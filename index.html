@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Fundraising &amp; Crowdfunding</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Login Section (for initial page load) -->
+    <section id="login" class="login-screen">
+        <h2>Register & Login Now. </h2>
+        <form id="loginForm" action="#" method="POST" onsubmit="return validateLogin()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" required="">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required="">
+            
+            <button type="submit" class="donate-btn">Submit Now</button>
+        </form>
+    </section>
+
+    <!-- Main Website Content (hidden initially until login) -->
+    <div id="main-content" class="hidden">
+        <!-- Header with Navigation -->
+        <header>
+            <div class="logo">
+                <h1>Crowd healthcare</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#campaigns">Campaigns</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="hero">
+            <h2>Support People in Need of Medical Assistance</h2>
+            <p>Join us in making a difference through crowdfunding for medical expenses.</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="about-container">
+                <h2>About Us</h2>
+                <p>We are a non-profit organization that helps individuals raise funds for urgent medical treatment and surgeries. Your generous donations can help save lives and provide financial relief to people in dire need.</p>
+            </div>
+        </section>
+
+        <!-- Campaigns Section -->
+        <section id="campaigns">
+            <div class="campaign">
+                <img src="johns-heart-surgery.jpeg" alt="Mohan's Heart Surgery" class="campaign-image">
+                <h3>Mohan's Heart Surgery Fund</h3>
+                <p>Mohan, a 45-year-old father of two young children, has been diagnosed with a serious heart condition that requires urgent surgery. Due to his inability to afford the procedure, his family is reaching out for help. Every contribution will go toward covering the costs of the surgery, post-operative care, and medication.</p>
+                <p><strong>Patient Details:</strong></p>
+                <ul>
+                    <li><strong>Age:</strong> 45 years</li>
+                    <li><strong>Family:</strong> Married with two children</li>
+                    <li><strong>Condition:</strong> Severe heart condition requiring immediate surgery</li>
+                    <li><strong>Required Surgery:</strong> Heart bypass surgery</li>
+                    <li><strong>Current Treatment:</strong> Medication and frequent doctor visits</li>
+                </ul>
+                <p><strong>Goal: ₹7,50,000</strong></p>
+                <a href="#donate" class="donate-btn">Donate Now</a>
+            </div>
+        </section>
+
+        <!-- Donate Section -->
+        <section id="donate">
+            <h2>Donate</h2>
+            <form id="donationForm" onsubmit="submitDonation(event)">
+                <label for="amount">Donation Amount (₹):</label>
+                <input type="number" id="amount" name="amount" placeholder="Enter amount in INR" required="">
+
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required="">
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required="">
+
+                <button type="submit" class="donate-btn">Submit Donation</button>
+            </form>
+
+            <!-- Thank You Message Section (hidden initially) -->
+            <div id="thank-you-message" class="hidden">
+                <h3>Thank You for Your Donation!</h3>
+                <p>Your generosity helps those in need. We appreciate your support!</p>
+                <a href="#campaigns" class="donate-btn">Back to Campaigns</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>If you have any questions, suggestions, or need assistance, feel free to reach out to us. We're here to help!</p>
+                <ul>
+                    <li><strong>Email:</strong> <a href="mailto:support@healthcarehelp.org">support@healthcarehelp.org</a></li>
+                    <li><strong>Phone:</strong> +91 123 456 7890</li>
+                    <li><strong>Address:</strong> 123 HealthCare Street, Pune, India</li>
+                </ul>
+            </div>
+        </section>
+
+    <script>
+        // Function to validate login
+        function validateLogin() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Check if the fields are not empty
+            if (username !== "" && password !== "") {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+                return false; // Prevent form submission
+            } else {
+                alert("Please enter both username and password.");
+                return false;
+            }
+        }
+
+        // Function to handle donation form submission
+        function submitDonation(event) {
+            event.preventDefault(); // Prevent form from submitting traditionally
+
+            // Capture the form data (optional for logging purposes or processing)
+            const amount = document.getElementById('amount').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            // Here, you can add code to process the donation (e.g., send it to a server, save it in a database, etc.)
+            
+            // Hide the donation form
+            document.getElementById('donationForm').style.display = 'none';
+
+            // Show the thank you message
+            document.getElementById('thank-you-message').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
